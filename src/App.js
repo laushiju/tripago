@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import TripList from "./component/TripList";
+import { useState } from "react";
 function App() {
+  const [showTrips, setShowTrips] = useState(true);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {showTrips && (
+        <button onClick={() => setShowTrips(false)}>hide trips</button>
+      )}
+      {!showTrips && (
+        <button onClick={() => setShowTrips(true)}>show trips</button>
+      )}
+      {showTrips && <TripList />}
     </div>
   );
 }
 
 export default App;
+
+//json-server --watch ./data/db.json
+//git push https://github.com/laushiju/tripago.git
+
+//#57
